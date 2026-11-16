@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Button</title>
+  <meta property="og:title" content="Interactive Button" />
+  <meta property="og:type" content="website" />
   <style>
     * {
       margin: 0;
@@ -53,10 +56,8 @@
       btn.style.top = randomY + 'px';
     }
 
-    // Dodges when the mouse hovers near/over it
     btn.addEventListener('mouseover', moveButton);
     
-    // Also dodges if someone tries to tap it on a touchscreen
     btn.addEventListener('touchstart', (e) => {
       e.preventDefault();
       moveButton();
