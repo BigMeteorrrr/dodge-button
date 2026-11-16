@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+    }
+    #dodgeBtn {
+      position: absolute;
+      padding: 14px 28px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #7d2ae8;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: left 0.15s ease-out, top 0.15s ease-out;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="dodgeBtn">Click Me!</button>
+
+  <script>
+    const btn = document.getElementById('dodgeBtn');
+
+    function moveButton() {
+      const padding = 20;
+      const maxX = window.innerWidth - btn.offsetWidth - padding;
+      const maxY = window.innerHeight - btn.offsetHeight - padding;
+
+      const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+      const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+
+      btn.style.left = randomX + 'px';
+      btn.style.top = randomY + 'px';
+    }
+
+    // Dodges when the mouse hovers near/over it
+    btn.addEventListener('mouseover', moveButton);
+    
+    // Also dodges if someone tries to tap it on a touchscreen
+    btn.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      moveButton();
+    });
+  </script>
+
+</body>
+</html>
